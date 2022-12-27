@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mbajal alpinejs</title>
+
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .green {
+            color: green;
+        }
+
+        .peteng {
+            background-color: rgb(26, 26, 44);
+            color: whitesmoke;
+        }
+    </style>
+
+    <script src="hilih.js"></script>
+</head>
+
+<body x-bind:class="$store.njirr.on? 'peteng' : ''">
+    <div x-data="huanjay">
+        <p x-text="open + ' Anjay ' + name + list"></p>
+        <p x-text="`${open} Anjay ${name} ${list} ${list.length} ${object.key}`"></p>
+
+        <button x-on:click="open = !open">pencet</button>
+        <p x-text="open ? 'halah':'hilih'"></p>
+        <p x-html="html"></p>
+
+        <input type="number" x-model="duit" placeholder="anjaaaaay">
+        <p x-text="'duite :' + duit"></p>
+        <h4 x-bind:class="weruh? 'green' : 'red'" x-text="weruh? 'apa ini' : 'apa itu'"></h4>
+        <button x-on:click="weruh = !weruh" x-text="weruh? 'anjay': 'gumun?' "></button>
+        <p x-show="weruh" x-transition>DUAARRRRR!!</p>
+        <template x-if="weruh">
+            <p>ANJAYYY!!</p>
+        </template>
+        <!-- ------------------------ -->
+        <div x-data="">
+            <p x-text="name"></p>
+            <!-- Conditionally add/remove a block of HTML from the page entirely. -->
+        </div>
+
+        <input x-bind:type="show? 'text': 'password'" name="" id="">
+        <button x-on:click="show = !show" x-text="show? 'hide':'show'"></button>
+
+        <br>
+        <hr>
+
+        <!-- <ul>
+            <template x-for="user in users">
+                <li x-text="user"></li>
+            </template>
+        </ul> -->
+
+        <!-- ---------------- -->
+        <button @click="fetchingdata()">fetch</button>
+        <button @click="users = []">buang</button>
+        <hr>
+        <template x-if="isLoading">
+            Now Loading
+        </template>
+
+        <template x-if="!isLoading">
+            <template x-if="users.length != 0">
+                <ul>
+                    <template x-for="user in users">
+                        <li x-text="user.name"></li>
+                    </template>
+                </ul>
+            </template>
+            <template x-if="users.length == 0">
+                <p>KOSONG?</p>
+            </template>
+            <hr>
+        </template>
+
+        <table border="1" x-cloack>
+            <thead>
+                <tr>
+                    <th>nomor</th>
+                    <th>nama</th>
+                    <th>gender</th>
+                    <th>kategori usia</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template x-for="(item,index) in objek">
+                    <tr>
+                        <td x-text="++index"></td>
+                        <td x-text="item.name"></td>
+                        <td x-text="item.gender == 'l'? 'Laki-laki' : 'Perempuan'"></td>
+                        <template x-if="item.age <= 13">
+                            <td x-text="'anak-anak'"></td>
+                        </template>
+                        <template x-if="item.age > 13 && item.age < 18">
+                            <td x-text="'remaja'"></td>
+                        </template>
+                        <template x-if="item.age >= 18">
+                            <td x-text="'dewasa'"></td>
+                        </template>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+
+        <!-- x-init -->
+        <div x-init="date = new Date()"></div>
+        <p x-text="date"></p>
+
+        <!-- x-effect -->
+        <div x-effect="console.log('Halah '+ duit)"></div>
+
+        <!-- x-ref -->
+        <input type="text" x-ref="content">
+
+        <button x-on:click="navigator.clipboard.writeText($refs.content.value)">
+            Copy
+        </button>
+
+        <!-- x-ignore -->
+        <p x-ignore x-text="name">aaa</p>
+
+        <h2>ANJAY</h2>
+        <div x-data="$store.njirr">
+            <p x-text="on"></p>
+            <button @click="toggle()">duar</button>
+        </div>
+
+        <!-- fetch list user -->
+
+
+    </div>
+</body>
+
+</html>
